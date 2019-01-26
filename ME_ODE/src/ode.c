@@ -1,4 +1,5 @@
-//cl /W3 /nologo pt1.c /link /DLL /out:pt1.dll
+//cl /W3 /nologo ode.c /link /DLL /out:ode.dll
+//7z a - r - tzip ode.fmu *.*
 
 #include "fmi2Functions.h"
 
