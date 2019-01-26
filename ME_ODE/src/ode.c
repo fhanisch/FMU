@@ -91,6 +91,19 @@ fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nv
 	return fmi2OK;
 }
 
+fmi2Status fmi2GetInteger(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Integer value[])
+{
+	return fmi2OK;
+}
+fmi2Status fmi2GetBoolean(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Boolean value[])
+{
+	return fmi2OK;
+}
+fmi2Status fmi2GetString(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2String value[])
+{
+	return fmi2OK;
+}
+
 fmi2Status fmi2SetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Real value[])
 {
 	Instance *m = (Instance*)c;
@@ -102,6 +115,19 @@ fmi2Status fmi2SetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nv
 			case 2: m->dx[0] = value[i]; break;
 		}
 	}
+	return fmi2OK;
+}
+
+fmi2Status fmi2SetInteger(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Integer value[])
+{
+	return fmi2OK;
+}
+fmi2Status fmi2SetBoolean(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Boolean value[])
+{
+	return fmi2OK;
+}
+fmi2Status fmi2SetString(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2String value[])
+{
 	return fmi2OK;
 }
 
