@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="ode"
+  guid="{597717fa-b99c-4beb-9a17-15683d2eba59}"
+  generationTool="Dymola Version 2018 (32-bit), 2017-04-10 (requires license to execute)"
+  generationDateAndTime="2019-01-26T16:33:22Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <ModelExchange
+    modelIdentifier="ode"
+    canGetAndSetFMUstate="false"
+    providesDirectionalDerivative="false"/>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="0.0001"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="x"
+      valueReference="1"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="der(x)"
+      valueReference="2">
+      <Real derivative="1"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Derivatives>
+      <Unknown index="2"
+        dependencies="1"
+        dependenciesKind="fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="2"
+        dependencies="1"
+        dependenciesKind="dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

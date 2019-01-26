@@ -1,5 +1,5 @@
 //cl /W3 /nologo ode.c /link /DLL /out:ode.dll
-//7z a - r - tzip ode.fmu *.*
+//7z a -r -tzip ode.fmu binaries modelDescription.xml
 
 #include "fmi2Functions.h"
 
@@ -79,6 +79,7 @@ fmi2Status fmi2Reset(fmi2Component c)
 fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Real value[])
 {
 	Instance *m = (Instance*)c;
+	m->dx[0] = 1 - m->x[0];
 	for (int i = 0; i < nvr; i++)
 	{
 		switch (vr[i])
@@ -152,7 +153,7 @@ fmi2Status fmi2SetContinuousStates(fmi2Component c, const fmi2Real x[], size_t n
 	Instance *m = (Instance*)c;
 	for (int i = 0; i < nx; i++)
 	{
-		m->x[0] = x[i];
+		m->x[i] = x[i];
 	}
 	return fmi2OK;
 }
@@ -191,10 +192,9 @@ fmi2Status fmi2GetDerivatives(fmi2Component c, fmi2Real derivatives[], size_t nx
 {
 	Instance *m = (Instance*)c;
 	m->dx[0] = 1 - m->x[0];
-
 	for (int i = 0; i < nx; i++)
 	{
-		derivatives[i] = m->dx[0];
+		derivatives[i] = m->dx[i];
 	}
 	return fmi2OK;
 }
@@ -209,7 +209,7 @@ fmi2Status fmi2GetContinuousStates(fmi2Component c, fmi2Real x[], size_t nx)
 	Instance *m = (Instance*)c;
 	for (int i = 0; i < nx; i++)
 	{
-		x[i] = m->x[0];
+		x[i] = m->x[i];
 	}
 	return fmi2OK;
 }
